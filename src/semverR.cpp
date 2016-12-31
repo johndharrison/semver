@@ -18,11 +18,14 @@ List parse_ptr(std::vector< std::string > versions) {
 // [[Rcpp::export]]
 Rcpp::StringVector render_ptr(semver200 verPtr) {
   Rcpp::StringVector out(5);
+  std::vector< std::string > names =  {"major", "minor", "patch",
+                                       "prerelease", "build"};
   out[0] = verPtr->major();
   out[1] = verPtr->minor();
   out[2] = verPtr->patch();
   out[3] = verPtr->prerelease();
   out[4] = verPtr->build();
+  out.names() = names;
   return out;
 }
 
