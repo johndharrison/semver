@@ -31,6 +31,12 @@ print.svlist <- function(x, ...){
   return(`class<-`(res, "svlist"))
 }
 
+#' @export
+`$.svptr` <- function(x, name = c("major", "minor", "patch",
+                                  "prerelease", "build"), ...){
+  name <- match.arg(name)
+  render_ptr(x)[[name]]
+}
 
 #' @export
 as.character.svptr <- function(x, ...){
