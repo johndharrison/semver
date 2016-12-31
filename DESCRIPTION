@@ -1,0 +1,24 @@
+Package: semver
+Type: Package
+Title: 'Semantic Versioning V2.0' Parser and Renderer
+Version: 0.0.1
+Authors@R: c(
+    person("John", "Harrison", , "johndharrison0@gmail.com",
+      role = c("aut", "cre"), comment = "R package semantic"),
+    person("Marko", "Živanović", role = c("aut", "cph"),
+      comment = "semver cpp library, https://github.com/zmarko/semver"))
+Description: Tools and functions for parsing, rendering and operating on
+    semantic version strings. Semantic versioning is a simple set of rules
+    and requirements that dictate how version numbers are assigned and
+    incremented as outlined at <http://semver.org>.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Imports:
+    Rcpp (>= 0.12.8.2),
+    assertthat
+LinkingTo: Rcpp
+Suggests:
+    testthat,
+    covr
+RoxygenNote: 5.0.1
