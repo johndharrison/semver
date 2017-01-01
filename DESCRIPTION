@@ -18,6 +18,9 @@ Imports:
     Rcpp (>= 0.12.8.2),
     assertthat
 LinkingTo: Rcpp
+URL: https://github.com/johndharrison/semver
+URLNote: https://github.com/johndharrison/semver
+BugReports: https://github.com/johndharrison/semver/issues
 Suggests:
     testthat,
     covr
