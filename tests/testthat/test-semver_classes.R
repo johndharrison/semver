@@ -74,9 +74,15 @@ test_that("canCompareSvlist", {
 })
 
 test_that("canCompareToCharacter", {
-  version <- c("1.7.1", "1.2.3-alpha", "1.2.3-alpha+1", "1.2.3-beta", "1.2.3")
+  version <- c("1.7.1", "1.2.3-alpha", "1.2.3-alpha+1", "1.2.3-beta",
+               "1.2.3", "1.2.3-alpha.1", "1.2.3-alpha.2", "1.2.3-alpha.a")
   out <- parse_version(version)
-  expect_identical(out > "1.5.1", c(TRUE, FALSE, FALSE, FALSE, FALSE))
+  expect_identical(out > "1.5.1", c(TRUE, rep(FALSE, 7)))
+  expect_true("1.5.1" < out[[1]])
+  expect_true(out[[6]] < out[[7]])
+  expect_false(out[[7]] <= out[[6]])
+  expect_true(out[[2]] < out[[7]])
+  expect_true(out[[7]] < out[[8]])
 })
 
 test_that("canGetStats", {

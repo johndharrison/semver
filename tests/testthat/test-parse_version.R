@@ -10,4 +10,12 @@ test_that("canParseVersions", {
   expect_true(all(vapply(out, class, character(1L)) == "svptr"))
   expect_identical(out[[8]]$build, "build.314")
   expect_identical(out[[8]]$prerelease, "alpha.1.2.3")
+  expect_error(parse_version(22), "version is not a character vector")
+  expect_error(parse_version("1.2.3-^"),
+               "invalid character encountered: \\^")
+  expect_error(parse_version("1.2.3-&"),
+               "invalid character encountered: &")
+  expect_error(parse_version("01.2.3"), "leading 0 not allowed")
+  expect_error(parse_version("1.2.3-01"),
+               "numeric identifiers cannot have leading 0")
 })
