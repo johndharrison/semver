@@ -18,7 +18,7 @@ print.svptr <- function(x, ...){
 
 #' @export
 print.svlist <- function(x, ...){
-  for(i in 1:length(x)){
+  for(i in seq_along(x)){
     cat(paste0("[", i, "]"),  "\n")
     print(x[[i]])
     cat("\n")

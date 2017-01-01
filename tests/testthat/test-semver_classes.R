@@ -89,3 +89,19 @@ test_that("canGetStats", {
   expect_identical(rank(out), c(5, 1.5, 1.5, 3, 4))
   expect_identical(range(out), c("1.2.3-alpha", "1.7.1"))
 })
+
+test_that("classErrorSvptr", {
+  version <- c("1.7.1", "1.2.3-alpha", "1.2.3-alpha+1", "1.2.3-beta", "1.2.3")
+  out <- parse_version(version)
+  expect_error(!out[[1]], "unary ! not defined for \"svptr\" objects")
+  expect_error(out[[1]] & out[[2]], "& not defined for \"svptr\" objects")
+
+})
+
+test_that("classErrorSvlist", {
+  version <- c("1.7.1", "1.2.3-alpha", "1.2.3-alpha+1", "1.2.3-beta", "1.2.3")
+  out <- parse_version(version)
+  expect_error(!out, "unary ! not defined for \"svlist\" objects")
+  expect_error(out & out[2], "& not defined for \"svlist\" objects")
+  expect_error(all(out), "all not defined for \"svlist\" objects")
+})
