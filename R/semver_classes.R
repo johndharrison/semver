@@ -74,7 +74,7 @@ Ops.svptr <- function(e1, e2){
   }
   op <- switch(.Generic, `<` = '<',  `>` = '>', `==` = '=', `!=` = '!=',
                `<=` = '<=', `>=` = '>=')
-  e1 <- semver:::ptr_comparator(e1, e2)
+  e1 <- ptr_comparator(e1, e2)
   e2 <- 0L
   NextMethod(.Generic)
 }
