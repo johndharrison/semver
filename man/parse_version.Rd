@@ -2,14 +2,23 @@
 % Please edit documentation in R/parse_version.R
 \name{parse_version}
 \alias{parse_version}
-\title{Title}
+\title{Parse semantic version}
 \usage{
 parse_version(version)
 }
 \arguments{
-\item{version}{}
+\item{version}{A character vector}
+}
+\value{
+A list of "svptr" objects. The list itself is of class "svlist"
 }
 \description{
-Title
+Parse a character vector to semantic versions
+}
+\examples{
+semver <- parse_version(c("1.2.3", "1.2.4", "1.0.0", "1.2.4-beta", "2.1.3-alpha", "1.9.4"))
+max(semver)
+ver124a <- semver[semver > "1.2.4-alpha"]
+sort(ver124a)
 }
 
