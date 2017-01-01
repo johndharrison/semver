@@ -93,3 +93,17 @@ Ops.svlist <- function(e1, e2){
   FUN <- get(.Generic, envir = parent.frame(), mode = "function")
   unlist(Map(FUN, e1 = e1, e2 = e2))
 }
+
+#' @export
+Summary.svlist <- function(x, ..., na.rm = FALSE){
+  ok <- switch(.Generic, max = , min = , range = TRUE, FALSE)
+  if (!ok)
+    stop(gettextf("%s not defined for \"svlist\" objects",
+                  .Generic), domain = NA)
+  sorted <- sort(x)
+  switch(.Generic,
+         max = sorted[[length(sorted)]],
+         min = sorted[[1]],
+         range = `class<-`(c(sorted[1], sorted[length(sorted)]), "svlist")
+  )
+}
