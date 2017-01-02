@@ -1,17 +1,12 @@
 #' @export
 print.svptr <- function(x, ...){
   x <- render_ptr(x)
-  major <- x[[1]]
-  minor <- x[[2]]
-  patch <- x[[3]]
-  prerelease <- x[[4]]
-  build <- x[[5]]
-  cat("Maj:", major, "Min:", minor, "Pat:", patch)
-  if(!identical(prerelease, "")){
-    cat(" Pre:", prerelease)
+  cat("Maj:", x[["major"]], "Min:", x[["minor"]], "Pat:", x[["patch"]])
+  if(!identical(x[["prerelease"]], "")){
+    cat(" Pre:", x[["prerelease"]])
   }
-  if(!identical(build, "")){
-    cat(" Bld:", build)
+  if(!identical(x[["build"]], "")){
+    cat(" Bld:", x[["build"]])
   }
   cat("\n")
 }
@@ -41,12 +36,12 @@ print.svlist <- function(x, ...){
 #' @export
 as.character.svptr <- function(x, ...){
   version <- render_ptr(x)
-  res <- paste(version[1:3], collapse = ".")
-  if(version[4] != ""){
-    res <- paste(res, version[4], sep = "-")
+  res <- paste(version[c("major", "minor", "patch")], collapse = ".")
+  if(version["prerelease"] != ""){
+    res <- paste(res, version["prerelease"], sep = "-")
   }
-  if(version[5] != ""){
-    res <- paste(res, version[5], sep = "+")
+  if(version["build"] != ""){
+    res <- paste(res, version["build"], sep = "+")
   }
   res
 }
@@ -58,12 +53,8 @@ as.character.svlist <- function(x, ...){
 
 #' @export
 as.data.frame.svlist <- function(x, ..., stringsAsFactors = FALSE){
-  svrender <- vapply(x, render_ptr, character(5))
-  svrender <- as.data.frame(t(svrender), ...,
-                            stringsAsFactors = stringsAsFactors)
-  svrender[c("major", "minor", "patch")] <-
-    lapply(svrender[c("major", "minor", "patch")], as.integer)
-  svrender
+  do.call(rbind.data.frame,
+          c(lapply(x, render_ptr), stringsAsFactors = FALSE))
 }
 
 #' @export
