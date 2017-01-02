@@ -16,7 +16,8 @@ Encoding: UTF-8
 LazyData: true
 Imports:
     Rcpp (>= 0.12.8),
-    assertthat
+    assertthat,
+    utils
 LinkingTo: Rcpp
 URL: https://github.com/johndharrison/semver
 URLNote: https://github.com/johndharrison/semver

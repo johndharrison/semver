@@ -12,6 +12,7 @@
 #' \code{\link{summary}} methods are implemented for both classes.
 #'
 #' @importFrom Rcpp sourceCpp
+#' @importFrom utils .DollarNames
 #' @useDynLib semver
 #' @name semver
 #' @docType package
