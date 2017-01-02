@@ -31,7 +31,7 @@ namespace version {
 
 	namespace {
 
-		/// Utility function to splice all vector elements to output stream, using designated separator 
+		/// Utility function to splice all vector elements to output stream, using designated separator
 		/// between elements and function object for getting values from vector elements.
 		template<typename T, typename F>
 		std::ostream& splice(std::ostream& os, const std::vector<T>& vec, const std::string& sep, F read) {
@@ -78,14 +78,14 @@ namespace version {
 	template<typename Parser, typename Comparator>
 	const std::string Basic_version<Parser, Comparator>::prerelease() const {
 		std::stringstream ss;
-		splice(ss, ver_.prerelease_ids, ".", [](const auto& id) { return id.first;});
+		splice(ss, ver_.prerelease_ids, ".", unamed_lambda());
 		return ss.str();
 	}
 
 	template<typename Parser, typename Comparator>
 	const std::string Basic_version<Parser, Comparator>::build() const {
 		std::stringstream ss;
-		splice(ss, ver_.build_ids, ".", [](const auto& id) { return id;});
+		splice(ss, ver_.build_ids, ".", unamed_lambda2());
 		return ss.str();
 	}
 

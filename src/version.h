@@ -1,4 +1,4 @@
-﻿/*
+/*
 The MIT License (MIT)
 
 Copyright (c) 2015 Marko Zivanovic
@@ -150,6 +150,18 @@ namespace version {
 		Parser parser_;
 		Comparator comparator_;
 		Version_data ver_;
+	};
+
+	struct unamed_lambda
+	{
+	  template<typename T>
+	  std::string operator()(T& id) const {return id.first;}
+	};
+
+	struct unamed_lambda2
+	{
+	  template<typename T>
+	  std::string operator()(T& id) const {return id;}
 	};
 }
 
