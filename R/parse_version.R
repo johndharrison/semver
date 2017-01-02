@@ -15,7 +15,7 @@
 #' semver[[1]] < semver[[2]]
 #'
 #' # compare against a version
-#' semver > semver[[1]]
+#' semver > semver[1]
 #'
 #' # compare against a character string
 #' semver > "1.7.2"
