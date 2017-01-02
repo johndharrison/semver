@@ -107,7 +107,39 @@
 #&gt; [3] Maj: 1 Min: 9 Pat: 4
 #&gt; 
 #&gt; [4] Maj: 2 Min: 1 Pat: 3 Pre: alpha
-#&gt; </div></pre>
+#&gt; </div><div class='input'><span class='co'># compare versions</span>
+<span class='no'>semver</span><span class='kw'>[[</span><span class='fl'>1</span>]] <span class='kw'>&lt;</span> <span class='no'>semver</span><span class='kw'>[[</span><span class='fl'>2</span>]]</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>
+<span class='co'># compare against a version</span>
+<span class='no'>semver</span> <span class='kw'>&gt;</span> <span class='no'>semver</span>[<span class='fl'>1</span>]</div><div class='output co'>#&gt; [1] FALSE  TRUE FALSE  TRUE  TRUE  TRUE</div><div class='input'>
+<span class='co'># compare against a character string</span>
+<span class='no'>semver</span> <span class='kw'>&gt;</span> <span class='st'>"1.7.2"</span></div><div class='output co'>#&gt; [1] FALSE FALSE FALSE FALSE  TRUE  TRUE</div><div class='input'>
+<span class='co'># sort versions</span>
+<span class='fu'>sort</span>(<span class='no'>semver</span>)</div><div class='output co'>#&gt; [1] Maj: 1 Min: 0 Pat: 0
+#&gt; 
+#&gt; [2] Maj: 1 Min: 2 Pat: 3
+#&gt; 
+#&gt; [3] Maj: 1 Min: 2 Pat: 4 Pre: beta
+#&gt; 
+#&gt; [4] Maj: 1 Min: 2 Pat: 4
+#&gt; 
+#&gt; [5] Maj: 1 Min: 9 Pat: 4
+#&gt; 
+#&gt; [6] Maj: 2 Min: 1 Pat: 3 Pre: alpha
+#&gt; </div><div class='input'><span class='fu'>order</span>(<span class='no'>semver</span>)</div><div class='output co'>#&gt; [1] 3 1 4 2 6 5</div><div class='input'><span class='fu'>rank</span>(<span class='no'>semver</span>)</div><div class='output co'>#&gt; [1] 2 4 1 3 6 5</div><div class='input'>
+<span class='co'># get summary statistics</span>
+<span class='fu'>min</span>(<span class='no'>semver</span>)</div><div class='output co'>#&gt; Maj: 1 Min: 0 Pat: 0</div><div class='input'><span class='fu'>max</span>(<span class='no'>semver</span>)</div><div class='output co'>#&gt; Maj: 2 Min: 1 Pat: 3 Pre: alpha</div><div class='input'><span class='fu'>range</span>(<span class='no'>semver</span>)</div><div class='output co'>#&gt; [1] Maj: 1 Min: 0 Pat: 0
+#&gt; 
+#&gt; [2] Maj: 2 Min: 1 Pat: 3 Pre: alpha
+#&gt; </div><div class='input'>
+<span class='co'># coerce versions</span>
+<span class='fu'>as.character</span>(<span class='no'>semver</span>)</div><div class='output co'>#&gt; [1] &quot;1.2.3&quot;       &quot;1.2.4&quot;       &quot;1.0.0&quot;       &quot;1.2.4-beta&quot;  &quot;2.1.3-alpha&quot;
+#&gt; [6] &quot;1.9.4&quot;      </div><div class='input'><span class='fu'>as.data.frame</span>(<span class='no'>semver</span>)</div><div class='output co'>#&gt;   major minor patch prerelease build
+#&gt; 1     1     2     3                 
+#&gt; 2     1     2     4                 
+#&gt; 3     1     0     0                 
+#&gt; 4     1     2     4       beta      
+#&gt; 5     2     1     3      alpha      
+#&gt; 6     1     9     4                 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
