@@ -23,6 +23,9 @@ URLNote: https://github.com/johndharrison/semver
 BugReports: https://github.com/johndharrison/semver/issues
 Suggests:
     testthat,
-    covr
+    covr,
+    knitr,
+    rmarkdown
 RoxygenNote: 5.0.1
 SystemRequirements: C++11
+VignetteBuilder: knitr
