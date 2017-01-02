@@ -17,5 +17,6 @@ test_that("canDollarTabComplete", {
                "1.2.3-1.a.22.bb.333.ccc.4444.dddd.55555.fffff",
                "1.2.3-alpha.1.2.3+build.314")
   out <- parse_version(version)
-  semver:::.DollarNames.svptr(out[[8]], "bui")
+  res <- semver:::.DollarNames.svptr(out[[8]], "bui")
+  expect_identical(res, "build")
 })
