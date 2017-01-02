@@ -6,7 +6,8 @@ test_that("canPrintSvptr", {
                "1.2.3-1.a.22.bb.333.ccc.4444.dddd.55555.fffff",
                "1.2.3-alpha.1.2.3+build.314")
   out <- parse_version(version)
-  expect_output(print(out[[8]]), "prerelease: alpha.1.2.3")
+  expect_output(print(out[[8]]),
+                "Maj: 1 Min: 2 Pat: 3 Pre: alpha.1.2.3 Bld: build.314")
 })
 
 test_that("canPrintSvlist", {
@@ -15,7 +16,7 @@ test_that("canPrintSvlist", {
                "1.2.3-1.a.22.bb.333.ccc.4444.dddd.55555.fffff",
                "1.2.3-alpha.1.2.3+build.314")
   out <- parse_version(version)
-  expect_output(print(out), "Major: 1 Minor: 2 Patch 3")
+  expect_output(print(out), "\\[5\\] Maj: 1 Min: 2 Pat: 3 Pre: test.123456")
 })
 
 test_that("canExtractFromSvlist", {
