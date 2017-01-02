@@ -2,7 +2,7 @@ semver
 ==========================
 | CRAN version       | Travis build status   | Appveyor build status   | Coverage |
 | :-------------: |:-------------:|:-------------:|:-------------:|
-| [![CRAN version](http://www.r-pkg.org/badges/version/binman)](https://cran.r-project.org/package=binman)  | [![Build Status](https://travis-ci.org/johndharrison/semver.svg?branch=master)](https://travis-ci.org/johndharrison/semver) | [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/johndharrison/semver?branch=master&svg=true)](https://ci.appveyor.com/project/johndharrison/semver) | [![codecov](https://codecov.io/gh/johndharrison/semver/branch/master/graph/badge.svg)](https://codecov.io/gh/johndharrison/semver)|
+| | [![Build Status](https://travis-ci.org/johndharrison/semver.svg?branch=master)](https://travis-ci.org/johndharrison/semver) | [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/johndharrison/semver?branch=master&svg=true)](https://ci.appveyor.com/project/johndharrison/semver) | [![codecov](https://codecov.io/gh/johndharrison/semver/branch/master/graph/badge.svg)](https://codecov.io/gh/johndharrison/semver)|
 
 ## Installation
 
