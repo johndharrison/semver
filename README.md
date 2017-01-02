@@ -1,4 +1,4 @@
-binman
+semver
 ==========================
 | CRAN version       | Travis build status   | Appveyor build status   | Coverage |
 | :-------------: |:-------------:|:-------------:|:-------------:|
@@ -37,8 +37,3 @@ written by Marko Živanović. The project is currently hosted on
 [github](https://github.com/zmarko/semver). The [Rcpp package](https://github.com/RcppCore/Rcpp) was used to provide R bindings. Some 
 changes were made on the C++ side as currently CRAN does not accept packages
 compiling under C++14 (R version 3.4.0 should allow this in future).
-
-### All the functions
-
-Currently the `semver` package has one function which will parse a character
-vector containing valid semantic versioning strings.
