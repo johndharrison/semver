@@ -54,7 +54,7 @@ as.character.svlist <- function(x, ...){
 #' @export
 as.data.frame.svlist <- function(x, ..., stringsAsFactors = FALSE){
   do.call(rbind.data.frame,
-          c(lapply(x, render_ptr), stringsAsFactors = FALSE))
+          c(lapply(x, render_ptr), stringsAsFactors = stringsAsFactors))
 }
 
 #' @export

@@ -1,6 +1,6 @@
 Package: semver
 Type: Package
-Title: 'Semantic Versioning V2.0' Parser and Renderer
+Title: 'Semantic Versioning V2.0' Parser
 Version: 0.1.0
 Authors@R: c(
     person("John", "Harrison", , "johndharrison0@gmail.com",
