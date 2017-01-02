@@ -1,3 +1,7 @@
+# semver 0.1.0
+
+* Initial release to CRAN
+
 # semver 0.0.4
 
 * Added tests for render_version and misc
