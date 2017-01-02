@@ -165,4 +165,4 @@ namespace version {
 	};
 }
 
-#include "version.inl"
+#include "versioninl.h"
