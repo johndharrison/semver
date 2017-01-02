@@ -56,6 +56,18 @@ test_that("canCoerceSvlistToCharacter", {
   expect_identical(as.character(out), version)
 })
 
+test_that("canCoerceSvlistToData.frame", {
+  version <- c("1.2.3-test","1.2.3-321", "1.2.3-test.1", "1.2.3-1.test",
+               "1.2.3-test.123456", "1.2.3-123456.test",
+               "1.2.3-1.a.22.bb.333.ccc.4444.dddd.55555.fffff",
+               "1.2.3-alpha.1.2.3+build.314")
+  out <- parse_version(version)
+  res <- as.data.frame(out)
+  expect_is(res, "data.frame")
+  expect_identical(names(res),
+                   c("major", "minor", "patch", "prerelease", "build"))
+})
+
 test_that("canCompareSvptr", {
   version <- c("1.7.1", "1.2.3-alpha", "1.2.3-alpha+1", "1.2.3-beta",
                "1.2.3")
