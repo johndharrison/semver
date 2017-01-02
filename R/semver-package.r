@@ -1,7 +1,7 @@
 #' semver.
 #'
+#' @importFrom Rcpp sourceCpp
 #' @useDynLib semver
-#' @import Rcpp
 #' @name semver
 #' @docType package
 NULL
