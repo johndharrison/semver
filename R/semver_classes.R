@@ -6,12 +6,12 @@ print.svptr <- function(x, ...){
   patch <- x[[3]]
   prerelease <- x[[4]]
   build <- x[[5]]
-  cat("Major:", major, "Minor:", minor, "Patch", patch)
-  if(!is.na(prerelease)){
-    cat("\nprerelease:", prerelease)
+  cat("Maj:", major, "Min:", minor, "Pat:", patch)
+  if(!identical(prerelease, "")){
+    cat(" Pre:", prerelease)
   }
-  if(!is.na(prerelease)){
-    cat("\nbuild:", build)
+  if(!identical(build, "")){
+    cat(" Bld:", build)
   }
   cat("\n")
 }
@@ -19,7 +19,7 @@ print.svptr <- function(x, ...){
 #' @export
 print.svlist <- function(x, ...){
   for(i in seq_along(x)){
-    cat(paste0("[", i, "]"),  "\n")
+    cat(paste0("[", i, "] "))
     print(x[[i]])
     cat("\n")
   }
@@ -54,6 +54,16 @@ as.character.svptr <- function(x, ...){
 #' @export
 as.character.svlist <- function(x, ...){
   vapply(x, as.character, character(1))
+}
+
+#' @export
+as.data.frame.svlist <- function(x, ..., stringsAsFactors = FALSE){
+  svrender <- vapply(x, render_ptr, character(5))
+  svrender <- as.data.frame(t(svrender), ...,
+                            stringsAsFactors = stringsAsFactors)
+  svrender[c("major", "minor", "patch")] <-
+    lapply(svrender[c("major", "minor", "patch")], as.integer)
+  svrender
 }
 
 #' @export
@@ -106,4 +116,10 @@ Summary.svlist <- function(x, ..., na.rm = FALSE){
          min = sorted[[1]],
          range = `class<-`(c(sorted[1], sorted[length(sorted)]), "svlist")
   )
+}
+
+#' @export
+.DollarNames.svptr <- function(x, pattern = ""){
+  grep(pattern, c("major", "minor", "patch", "prerelease", "build"),
+       value = TRUE)
 }
