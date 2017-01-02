@@ -18,7 +18,7 @@ BEGIN_RCPP
 END_RCPP
 }
 // render_ptr
-Rcpp::StringVector render_ptr(semver200 verPtr);
+Rcpp::List render_ptr(semver200 verPtr);
 RcppExport SEXP semver_render_ptr(SEXP verPtrSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;

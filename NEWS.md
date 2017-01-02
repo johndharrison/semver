@@ -1,3 +1,8 @@
+# semver 0.0.4
+
+* Added tests for render_version and misc
+* Added basic vignette
+
 # semver 0.0.3
 
 * Internal function render_ptr now returns a list rather than a character 
