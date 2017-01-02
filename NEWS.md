@@ -1,6 +1,8 @@
 # semver 0.0.3
 
-* Internal function render_ptr now returns a list rather than a character vector
+* Internal function render_ptr now returns a list rather than a character 
+  vector
+* Added a render_version method for svptr and svlist classes
 
 # semver 0.0.2
 
