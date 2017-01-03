@@ -6,7 +6,7 @@ using namespace Rcpp;
 List parse_ptr(std::vector< std::string > versions) {
   List out(versions.size());
   for(int i = 0; i < versions.size(); i++){
-    version::Semver200_version *v = new version::Semver200_version(versions[i]);
+    sv_version::Semver200_version *v = new sv_version::Semver200_version(versions[i]);
     semver200 ptr(v);
     ptr.attr("class") = "svptr";
     out[i] = ptr;

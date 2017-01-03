@@ -29,7 +29,7 @@ SOFTWARE.
 
 using namespace std;
 
-namespace version {
+namespace sv_version {
 
 	namespace {
 
