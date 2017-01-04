@@ -21,3 +21,11 @@ is_integer <- function(x){
 assertthat::on_failure(is_integer) <- function(call, env) {
   paste0(deparse(call$x), " should be an integer value.")
 }
+
+is_list <- function(x){
+  is.list(x)
+}
+
+assertthat::on_failure(is_list) <- function(call, env){
+  paste0(deparse(call$x), " is not a list")
+}
