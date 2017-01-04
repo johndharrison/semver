@@ -27,6 +27,7 @@ SOFTWARE.
 #include <ostream>
 #include <string>
 #include <vector>
+#include <stdexcept>
 
 namespace sv_version {
 
