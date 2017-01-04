@@ -2,7 +2,8 @@
 
 * Add set_ptr, reset_ptr and increment_ptr c++ level functions to act on
   version fields.
-* version fields can be set via `$<-` for svptr class
+* Version fields can be set via `$<-` for svptr class
+* Added a set_version method to set the fields of semantic version objects
 
 # semver 0.1.1
 
