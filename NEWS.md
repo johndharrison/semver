@@ -1,3 +1,15 @@
+# semver 0.1.2
+
+* Add set_ptr, reset_ptr and increment_ptr c++ level functions to act on
+  version fields.
+* version fields can be set via `$<-` for svptr class
+
+# semver 0.1.1
+
+* Rename version c++ namespace to sv_version due to conflicts with some
+  OS system headers (Solaris x86).
+* Add #include <stdexcept> as some OS had issues (windows server 2008)
+
 # semver 0.1.0
 
 * Initial release to CRAN
