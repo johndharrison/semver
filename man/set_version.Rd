@@ -2,18 +2,19 @@
 % Please edit documentation in R/set_version.R
 \name{set_version}
 \alias{set_version}
+\alias{set_version.svlist}
 \alias{set_version.svptr}
 \title{Set version field}
 \usage{
-set_version(x, ...)
+set_version(x, field, value, ...)
 
 \method{set_version}{svptr}(x, field = c("major", "minor", "patch",
-  "prerelease", "build"), value)
+  "prerelease", "build"), value, ...)
+
+\method{set_version}{svlist}(x, field, value, ...)
 }
 \arguments{
 \item{x}{An object of class "svlist" or "svptr".}
-
-\item{...}{Additional arguments passed on to methods.}
 
 \item{field}{For the "svptr" class a character string detailing the field to
 set (major, minor etc...). For the "svlist" class a character vector
@@ -24,6 +25,8 @@ and "patch" this is an integer. For fields "prerelease" and "build"
 this is a character. For the "svptr" class value is a scalar. For
 the "svlist" class value is a list detailing the value to set for
 each list member.}
+
+\item{...}{Additional arguments passed on to methods.}
 }
 \value{
 returns an object of class svptr or svlist
@@ -31,5 +34,11 @@ returns an object of class svptr or svlist
 \description{
 Set the version field. "Major", "minor" and "patch" fields are set as
     integers, "prerelease" and "build" are set with character strings.
+}
+\examples{
+semver <- parse_version(c("1.2.3", "1.2.4-alpha+bld1"))
+semver[[1]] <- set_version(semver[[1]], "major", 2L)
+set_version(semver, c("prerelease", "build"), list("hello"))
+set_version(semver, c("prerelease"), list("hello", "world"))
 }
 
