@@ -35,8 +35,7 @@ int ptr_comparator(XPtrsver200 verPtr1, XPtrsver200 verPtr2){
 }
 
 // [[Rcpp::export]]
-List set_ptr(XPtrsver200 verPtr, int cint, SEXP newvalue) {
-  List out(1);
+SEXP set_ptr(XPtrsver200 verPtr, int cint, SEXP newvalue) {
   bver *v1;
   if(cint == 1){
     v1 = new bver(verPtr->set_major(Rcpp::as<int>(newvalue)));
@@ -58,9 +57,7 @@ List set_ptr(XPtrsver200 verPtr, int cint, SEXP newvalue) {
   }
   XPtrbver ptr(v1);
   ptr.attr("class") = "svptr";
-  out[0] = ptr;
-  out.attr("class") = "svlist";
-  return out;
+  return ptr;
 }
 
 // [[Rcpp::export]]

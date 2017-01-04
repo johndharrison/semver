@@ -41,7 +41,7 @@ BEGIN_RCPP
 END_RCPP
 }
 // set_ptr
-List set_ptr(XPtrsver200 verPtr, int cint, SEXP newvalue);
+SEXP set_ptr(XPtrsver200 verPtr, int cint, SEXP newvalue);
 RcppExport SEXP semver_set_ptr(SEXP verPtrSEXP, SEXP cintSEXP, SEXP newvalueSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
