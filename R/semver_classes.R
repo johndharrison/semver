@@ -35,7 +35,7 @@ print.svlist <- function(x, ...){
 
 #' @export
 `$<-.svptr` <- function(x, name = c("major", "minor", "patch",
-                                    "prerelease", "build"), value, ...){
+                                    "prerelease", "build"), value){
   name <- match.arg(name)
   field <- switch(name,
                   major = 1L,
