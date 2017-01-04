@@ -18,25 +18,64 @@ BEGIN_RCPP
 END_RCPP
 }
 // render_ptr
-Rcpp::List render_ptr(semver200 verPtr);
+Rcpp::List render_ptr(XPtrsver200 verPtr);
 RcppExport SEXP semver_render_ptr(SEXP verPtrSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< semver200 >::type verPtr(verPtrSEXP);
+    Rcpp::traits::input_parameter< XPtrsver200 >::type verPtr(verPtrSEXP);
     rcpp_result_gen = Rcpp::wrap(render_ptr(verPtr));
     return rcpp_result_gen;
 END_RCPP
 }
 // ptr_comparator
-int ptr_comparator(semver200 verPtr1, semver200 verPtr2);
+int ptr_comparator(XPtrsver200 verPtr1, XPtrsver200 verPtr2);
 RcppExport SEXP semver_ptr_comparator(SEXP verPtr1SEXP, SEXP verPtr2SEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< semver200 >::type verPtr1(verPtr1SEXP);
-    Rcpp::traits::input_parameter< semver200 >::type verPtr2(verPtr2SEXP);
+    Rcpp::traits::input_parameter< XPtrsver200 >::type verPtr1(verPtr1SEXP);
+    Rcpp::traits::input_parameter< XPtrsver200 >::type verPtr2(verPtr2SEXP);
     rcpp_result_gen = Rcpp::wrap(ptr_comparator(verPtr1, verPtr2));
+    return rcpp_result_gen;
+END_RCPP
+}
+// set_ptr
+List set_ptr(XPtrsver200 verPtr, int cint, SEXP newvalue);
+RcppExport SEXP semver_set_ptr(SEXP verPtrSEXP, SEXP cintSEXP, SEXP newvalueSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< XPtrsver200 >::type verPtr(verPtrSEXP);
+    Rcpp::traits::input_parameter< int >::type cint(cintSEXP);
+    Rcpp::traits::input_parameter< SEXP >::type newvalue(newvalueSEXP);
+    rcpp_result_gen = Rcpp::wrap(set_ptr(verPtr, cint, newvalue));
+    return rcpp_result_gen;
+END_RCPP
+}
+// reset_ptr
+List reset_ptr(XPtrsver200 verPtr, int cint, SEXP newvalue);
+RcppExport SEXP semver_reset_ptr(SEXP verPtrSEXP, SEXP cintSEXP, SEXP newvalueSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< XPtrsver200 >::type verPtr(verPtrSEXP);
+    Rcpp::traits::input_parameter< int >::type cint(cintSEXP);
+    Rcpp::traits::input_parameter< SEXP >::type newvalue(newvalueSEXP);
+    rcpp_result_gen = Rcpp::wrap(reset_ptr(verPtr, cint, newvalue));
+    return rcpp_result_gen;
+END_RCPP
+}
+// increment_ptr
+List increment_ptr(XPtrsver200 verPtr, int cint, SEXP increment);
+RcppExport SEXP semver_increment_ptr(SEXP verPtrSEXP, SEXP cintSEXP, SEXP incrementSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< XPtrsver200 >::type verPtr(verPtrSEXP);
+    Rcpp::traits::input_parameter< int >::type cint(cintSEXP);
+    Rcpp::traits::input_parameter< SEXP >::type increment(incrementSEXP);
+    rcpp_result_gen = Rcpp::wrap(increment_ptr(verPtr, cint, increment));
     return rcpp_result_gen;
 END_RCPP
 }

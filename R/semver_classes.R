@@ -34,6 +34,25 @@ print.svlist <- function(x, ...){
 }
 
 #' @export
+`$<-.svptr` <- function(x, name = c("major", "minor", "patch",
+                                    "prerelease", "build"), value, ...){
+  name <- match.arg(name)
+  field <- switch(name,
+                  major = 1L,
+                  minor = 2L,
+                  patch = 3L,
+                  prerelease = 4L,
+                  build = 5L
+  )
+  if(field < 4L){
+    assertthat::assert_that(is_integer(value))
+  }else{
+    assertthat::assert_that(is_string(value))
+  }
+  set_ptr(x, field, value[1])[[1]]
+}
+
+#' @export
 as.character.svptr <- function(x, ...){
   version <- render_ptr(x)
   res <- paste(version[c("major", "minor", "patch")], collapse = ".")
