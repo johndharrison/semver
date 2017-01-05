@@ -1,3 +1,7 @@
+# semver 0.1.3
+* Added tests for set_version.
+* Added a reset_version method to reset the fields of semantic version objects
+
 # semver 0.1.2
 
 * Add set_ptr, reset_ptr and increment_ptr c++ level functions to act on
