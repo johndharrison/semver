@@ -46,7 +46,7 @@ test_that("canSetSvlist", {
   expect_identical(res, c("1.2.3-hello", "1.2.4-alpha+world"))
 })
 
-test_that("errorWhenSetSvptr", {
+test_that("errorWhenResetSvptr", {
   semver <- parse_version(c("1.2.3", "1.2.4-alpha+bld1"))
   expect_error(
     set_version(semver, "major", 2L),
