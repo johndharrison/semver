@@ -1,6 +1,7 @@
 # semver 0.1.3
 * Added tests for set_version.
 * Added a reset_version method to reset the fields of semantic version objects
+* Added tests for reset_version.
 
 # semver 0.1.2
 
