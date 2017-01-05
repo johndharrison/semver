@@ -68,3 +68,5 @@ range(semver)
 as.character(semver)
 as.data.frame(semver)
 ```
+
+For more detail see the vignette [semver: Basics](https://cran.r-project.org/web/packages/semver/vignettes/basics.html)

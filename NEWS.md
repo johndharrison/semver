@@ -1,3 +1,6 @@
+# semver 0.1.5
+* Update basics vignette detailing new methods
+
 # semver 0.1.4
 * Added an increment_version method to increment the fields of semantic version objects
 * Added tests for increment_version.
