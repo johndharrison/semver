@@ -22,7 +22,7 @@ test_that("errorWhenSetSvptr", {
   )
   expect_error(
     set_version(semver[[1]], "build", 2L),
-    "value should be an character string"
+    "value should be a character string"
   )
 })
 
