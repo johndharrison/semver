@@ -38,7 +38,7 @@ written by Marko Živanović. The project is currently hosted on
 changes were made on the C++ side as currently CRAN does not accept packages
 compiling under C++14 (R version 3.4.0 should allow this in future).
 
-### All the functions
+### Parsing/Rendering semantic versions
 
 #### parse_version
 The `parse_version` function parses a character vector containing valid 
@@ -110,7 +110,7 @@ sem_versions > sem_versions[1]
 
 ```
 
-## Compare to character strings
+### Compare to character strings
 
 Sometimes it can be useful to compare a parsed vector of semantic versions to a 
 character string:
@@ -118,4 +118,168 @@ character string:
 ```{r example5}
 sem_versions > "1.1.0-beta"
 sem_versions[sem_versions > "1.1.0-beta"]
+```
+
+## Updating versions
+
+If you want to change or ammend the major, minor, patch, prerelease or build
+fields the semver package provides a number of methods to achieve this. 
+
+### set_version
+
+The `set_version` method operates on `svptr` and `svlist` classes. It
+simply changes the indicated field to the value given. Other fields in the
+version are unaffected.
+
+#### svptr
+
+For the `svptr` class the `set_version` method takes a character string 
+argument `field` which indicates which field (major, minor etc.) to change. 
+The `value` argument is an integer scalar when field is major, minor or 
+patch and a character string when prerelease or build. 
+
+```{r example6}
+library(semver)
+examples <- c("1.0.0", "2.1.3", "1.0.0-alpha", "1.0.0-alpha+1.2", 
+              "1.8.2-beta.1.13", "1.8.2-beta.1.10")
+sem_versions <- parse_version(examples)
+set_version(sem_versions[[1]], "major", 2L)
+set_version(sem_versions[[1]], "minor", 1L)
+set_version(sem_versions[[1]], "patch", 1L)
+set_version(sem_versions[[4]], "prerelease", "beta")
+set_version(sem_versions[[4]], "build", "bld1a")
+
+```
+**Note that changing a field with the set_version method does not change any other field.**
+
+##### Dollar assignment
+
+As syntactic sugar for assigning using `set_version` there is a dollar assignment method 
+for svptr classes so the following are equivalent waysto assign fields:
+
+```{r example7}
+sem_versions[[1]] <- set_version(sem_versions[[1]], "major", 3L)
+sem_versions[[1]]
+
+# Syntactic sugar
+sem_versions[[1]]$minor <- 2L
+sem_versions[[1]]
+
+```
+
+#### svlist
+
+For `svlist` classes the `set_version` method expects a character vector
+for the `field` argument. The `value` argument is expected to be a list
+with integer and character elements assigning to (major, minor, patch)/(prerelease, build)
+fields respectively. If either the length of the field or values argeument
+is shorter than the number of elements in the `svlist` then recycling occurs.
+
+```{r example8}
+examples <- c("1.0.0", "1.8.2-beta.1.10", "2.4.6-8")
+sem_versions <- parse_version(examples)
+# recycling on the field argument
+set_version(sem_versions, "major", list(2L, 4L, 6L))
+# recycling on the value argument
+set_version(sem_versions, c("major", "minor", "patch"), list(7L))
+# assigning integer and character values
+set_version(sem_versions, c("prerelease", "minor", "build"), 
+            list("alpha", 3L, "build1.12"))
+```
+
+
+### reset_version
+
+The `reset_version` method operates on `svptr` and `svlist` classes. It
+changes the indicated field to the value given. Fields with lower precedence
+are set to default values:
+
+```
+MAJOR(0L) > MINOR (0L) > PATCH (0L) > PRERELEASE ("") > BUILD ("")
+```
+
+#### svptr
+The `reset_version` method for `svptr` classes operates similarly to the
+`set_version` method with fields of lower precedence being set to default values:
+
+```{r example9}
+examples <- c("1.8.2-beta.1.10+somebuild", "2.4.6-8")
+sem_versions <- parse_version(examples)
+reset_version(sem_versions[[1]], "major", 2L)
+reset_version(sem_versions[[1]], "minor", 3L)
+reset_version(sem_versions[[1]], "patch", 4L)
+reset_version(sem_versions[[1]], "prerelease", "gamma")
+reset_version(sem_versions[[1]], "build", "superbuild")
+```
+
+#### svlist
+The `reset_version` method for `svlist` classes operates similarly to the
+`set_version` method with fields of lower precedence being set to default 
+values. Again recycling of elements occur if the length of the field/value
+argument is shorter than the number of elements in the `svlist`:
+
+```{r example10}
+examples <- c("1.8.2-beta.1.10+somebuild", "2.4.6-8")
+sem_versions <- parse_version(examples)
+# recycling on both arguments
+reset_version(sem_versions, "major", list(3L))
+# recycling on field argument
+reset_version(sem_versions, "minor", list(3L, 4L))
+# recycling on value argument
+reset_version(sem_versions, c("major", "patch"), list(4L))
+# assigning integer and character fields
+reset_version(sem_versions, c("prerelease", "minor"), list("zeta", 7L))
+
+```
+### increment_version
+
+The `increment_version` method operates on `svptr` and `svlist` classes. It
+increments the given field with the provided value. Fields of lower precedence
+are set to default value. 
+
+1. **Only major, minor and patch field can be incremented**
+
+2. **To decrement a field provide a negative integer as the value argument**
+
+#### svptr
+The `increment_version` method for `svptr` classes increments the chosen field with
+the given value with fields of lower precedence being set to default values:
+
+```{r example11}
+examples <- c("1.8.2-beta.1.10+somebuild", "2.4.6-8")
+sem_versions <- parse_version(examples)
+# incrementing versions
+increment_version(sem_versions[[1]], "major", 1L)
+increment_version(sem_versions[[1]], "minor", 2L)
+increment_version(sem_versions[[1]], "patch", 3L)
+# decrementing versions
+increment_version(sem_versions[[1]], "major", -1L)
+increment_version(sem_versions[[1]], "minor", -2L)
+increment_version(sem_versions[[1]], "patch", -2L)
+```
+
+#### svlist
+
+The `increment_version` method for `svlist` classes takes a character vector 
+as argument `field` and an integer vector as argument `value`. Recycling occurs
+as for `set_version`/`reset_version` methods:
+
+```{r example12}
+examples <- c("1.8.2-beta.1.10+somebuild", "2.4.6-8")
+sem_versions <- parse_version(examples)
+## Incrementing
+# recycling on both arguments
+increment_version(sem_versions, "major", 3L)
+# recycling on field argument
+increment_version(sem_versions, "minor", c(3L, 4L))
+# recycling on value argument
+increment_version(sem_versions, c("major", "patch"), 4L)
+## Decrementing
+# recycling on both arguments
+increment_version(sem_versions, "major", -1L)
+# recycling on field argument
+increment_version(sem_versions, "minor", c(-3L, -4L))
+# recycling on value argument
+increment_version(sem_versions, c("minor"), -4L)
+
 ```
