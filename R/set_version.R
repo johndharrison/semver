@@ -50,5 +50,6 @@ set_version.svptr <- function(x, field = c("major", "minor", "patch",
 #' @rdname set_version
 set_version.svlist <- function(x, field, value, ...){
   assertthat::assert_that(is_list(value))
-  Map(set_version, x = x, field = field, value = value)
+  res <- Map(set_version, x = x, field = field, value = value)
+  `class<-`(res, "svlist")
 }
