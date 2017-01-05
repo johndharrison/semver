@@ -61,8 +61,7 @@ SEXP set_ptr(XPtrsver200 verPtr, int cint, SEXP newvalue) {
 }
 
 // [[Rcpp::export]]
-List reset_ptr(XPtrsver200 verPtr, int cint, SEXP newvalue) {
-  List out(1);
+SEXP reset_ptr(XPtrsver200 verPtr, int cint, SEXP newvalue) {
   bver *v1;
   if(cint == 1){
     v1 = new bver(verPtr->reset_major(Rcpp::as<int>(newvalue)));
@@ -84,14 +83,11 @@ List reset_ptr(XPtrsver200 verPtr, int cint, SEXP newvalue) {
   }
   XPtrbver ptr(v1);
   ptr.attr("class") = "svptr";
-  out[0] = ptr;
-  out.attr("class") = "svlist";
-  return out;
+  return ptr;
 }
 
 // [[Rcpp::export]]
-List increment_ptr(XPtrsver200 verPtr, int cint, SEXP increment) {
-  List out(1);
+SEXP increment_ptr(XPtrsver200 verPtr, int cint, SEXP increment) {
   bver *v1;
   if(cint == 1){
     v1 = new bver(verPtr->inc_major(Rcpp::as<int>(increment)));
@@ -107,7 +103,5 @@ List increment_ptr(XPtrsver200 verPtr, int cint, SEXP increment) {
   }
   XPtrbver ptr(v1);
   ptr.attr("class") = "svptr";
-  out[0] = ptr;
-  out.attr("class") = "svlist";
-  return out;
+  return ptr;
 }

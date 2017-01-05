@@ -54,7 +54,7 @@ BEGIN_RCPP
 END_RCPP
 }
 // reset_ptr
-List reset_ptr(XPtrsver200 verPtr, int cint, SEXP newvalue);
+SEXP reset_ptr(XPtrsver200 verPtr, int cint, SEXP newvalue);
 RcppExport SEXP semver_reset_ptr(SEXP verPtrSEXP, SEXP cintSEXP, SEXP newvalueSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
@@ -67,7 +67,7 @@ BEGIN_RCPP
 END_RCPP
 }
 // increment_ptr
-List increment_ptr(XPtrsver200 verPtr, int cint, SEXP increment);
+SEXP increment_ptr(XPtrsver200 verPtr, int cint, SEXP increment);
 RcppExport SEXP semver_increment_ptr(SEXP verPtrSEXP, SEXP cintSEXP, SEXP incrementSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
