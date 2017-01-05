@@ -33,7 +33,7 @@ SOFTWARE.
 
 using namespace std;
 
-namespace version {
+namespace sv_version {
 
 	namespace {
 		enum class Parser_state {

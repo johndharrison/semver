@@ -1,7 +1,7 @@
 Package: semver
 Type: Package
 Title: 'Semantic Versioning V2.0.0' Parser
-Version: 0.1.0
+Version: 0.1.4
 Authors@R: c(
     person("John", "Harrison", , "johndharrison0@gmail.com",
       role = c("aut", "cre"), comment = "R package semantic"),

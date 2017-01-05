@@ -34,6 +34,13 @@ print.svlist <- function(x, ...){
 }
 
 #' @export
+`$<-.svptr` <- function(x, name = c("major", "minor", "patch",
+                                    "prerelease", "build"), value){
+  name <- match.arg(name)
+  set_version(x, field = name, value = value)
+}
+
+#' @export
 as.character.svptr <- function(x, ...){
   version <- render_ptr(x)
   res <- paste(version[c("major", "minor", "patch")], collapse = ".")

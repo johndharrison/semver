@@ -13,3 +13,15 @@ ptr_comparator <- function(verPtr1, verPtr2) {
     .Call('semver_ptr_comparator', PACKAGE = 'semver', verPtr1, verPtr2)
 }
 
+set_ptr <- function(verPtr, cint, newvalue) {
+    .Call('semver_set_ptr', PACKAGE = 'semver', verPtr, cint, newvalue)
+}
+
+reset_ptr <- function(verPtr, cint, newvalue) {
+    .Call('semver_reset_ptr', PACKAGE = 'semver', verPtr, cint, newvalue)
+}
+
+increment_ptr <- function(verPtr, cint, increment) {
+    .Call('semver_increment_ptr', PACKAGE = 'semver', verPtr, cint, increment)
+}
+
