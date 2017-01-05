@@ -1,3 +1,7 @@
+# semver 0.1.4
+* Added an increment_version method to increment the fields of semantic version objects
+* Added tests for increment_version.
+
 # semver 0.1.3
 * Added tests for set_version.
 * Added a reset_version method to reset the fields of semantic version objects
